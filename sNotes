@@ -1,0 +1,19 @@
+# create index.js
+
+# create empty json file
+npm init -y
+
+# install dependencies 
+npm install body-parser cors express mongoose nodemon
+
+# add in json file and make changes like this
+"type": "module",
+"scripts": {
+  "start": "nodemon index.js"
+},
+
+# the variables present in .env will be visible to our application after using below command
+npm i dotenv
+
+# dependencies for third part
+npm install bcryptjs jsonwebtoken

@@ -1,0 +1,23 @@
+# initialisation of react app with vite and tailwindcss
+npm create vite @latest ./ -- --template react or npm create vite@latest ./
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+# this created problem
+npm install -D tailwindcss 
+npx tailwindcss init
+
+# installing dependencies 
+npm install axios moment react-file-base64 redux redux-thunk react-redux @reduxjs/toolkit
+
+# an necessary statement told by  jsm but things are working well without it
+"proxy": "http://localhost:5000" //before dependencies
+
+# dependencies for third part
+npm install jwt-decode @react-oauth/google react-router-dom 
+
+# vscode extension
+ES7+ React/Redux/React-Native snippets
+rafc
+
+~ changing environment variable => reload server
