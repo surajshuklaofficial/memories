@@ -5,5 +5,3 @@ import Auth from "./Auth";
 import Home from "./Home";
 
 export { Navbar, Form, Posts, Auth, Home };
-
-export { Navbar, Form, Posts, Auth, Home };
