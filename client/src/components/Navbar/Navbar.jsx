@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 
-import logo from '../../assets/memories.png';
+import { logo, logoText } from '../../assets';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -31,10 +31,10 @@ const Navbar = () => {
 
 
   return (
-    <div className="my-8 mx-32 py-4 px-24 flex items-center justify-between border rounded-lg bg-white">
-        <a className='flex items-center justify-center gap-2' href='/'>    
-            <h1 className="text-7xl text text-[#00b7ff]">Memories</h1>
-            <img className="w-16 h-16" src={logo} alt='memories' />
+    <div className="my-8 mx-32 py-4 px-24 flex items-center justify-between border rounded-lg bg-white shadow-md">
+        <a className='flex items-baseline justify-center gap-2' href='/'>    
+            <img className="text-7xl text-[#00b7ff] h-16" src={logoText} alt='memories'/>
+            <img className="w-14 h-14" src={logo} alt='logo' />
         </a>
 
         {user ? (

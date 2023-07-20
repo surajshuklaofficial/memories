@@ -13,7 +13,9 @@ API.interceptors.request.use((req) => {
 // const url = 'http://localhost:5000/posts'; // url pointed to backened url/route
 // all actions towards our backened are done using redux; we need to dispatch those actions
 
-export const fetchPosts = () => API.get('/posts'); // this url simply return all the post that are present on our database
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
+export const fetchPost  = (id) => API.get(`/posts/${id}`);
+export const fetchPosts = (page) => API.get(`/posts?page=${page}`); // this url simply return all the post that are present on our database
 export const createPost = (newPost) => API.post('/posts', newPost);
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);

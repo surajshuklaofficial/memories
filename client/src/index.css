@@ -4,5 +4,6 @@
 
 
 body {
-    background-image: url("dragon-scales.png");
+    background-color: #f7f8fc;
+    /* background-image: url("./assets/dragon-scales.png"); */
 }
