@@ -5,6 +5,7 @@ import moment from 'moment';
 import CircularProgress from '../../elements/CircularProgress';
 
 import { getPost, getPostsBySearch } from '../../actions/posts';
+import CommentSection from './CommentSection';
 
 const PostDetails = () => {
     const { post, posts, isLoading } = useSelector((state) => state.posts) ;
@@ -12,8 +13,6 @@ const PostDetails = () => {
     const navigate = useNavigate();
     const param = useParams();
     const { id } = param;
-
-    console.log(param);
 
     useEffect(() => {
         dispatch(getPost(id));
@@ -48,7 +47,7 @@ const PostDetails = () => {
                     <hr />
                     <h2 className='my-2'>Realtime Chat - coming soon</h2>
                     <hr />
-                    <h2 className='my-2'>Comments - coming soon</h2>
+                    <CommentSection post={post} />
                     <hr />
                 </div>
                 <img className='w-2/5 rounded-3xl shadow-lg max-h-[40rem]' src={post.selectedFile} alt='' />
