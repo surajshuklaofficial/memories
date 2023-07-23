@@ -31,7 +31,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="my-8 mx-32 py-4 px-24 flex items-center justify-between border rounded-lg bg-white shadow-md">
+    <div className="my-8 mx-32 py-4 px-24 flex lg:flex-row gap-4 items-center justify-between border rounded-lg bg-white shadow-md flex-col">
         <a className='flex items-baseline justify-center gap-2' href='/'>    
             <img className="text-7xl text-[#00b7ff] h-16" src={logoText} alt='memories'/>
             <img className="w-14 h-14" src={logo} alt='logo' />

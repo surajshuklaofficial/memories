@@ -39,7 +39,7 @@ const Home = () => {
     }
 
     return (
-        <div className="flex justify-between my-8 mx-32 gap-4 px-8">
+        <div className="flex justify-between my-8 mx-32 gap-4 px-8 lg:flex-row flex-col-reverse">
             <Posts setCurrentId={setCurrentId}/>
 
             <div className="flex flex-col gap-4">
