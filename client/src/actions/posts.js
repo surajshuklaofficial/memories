@@ -1,5 +1,5 @@
 import * as api from '../api'; // importing everything from api as api
-import { FETCH_ALL, FETCH_BY_SEARCH, FETCH_POST, CREATE, UPDATE, DELETE, START_LOADING, END_LOADING } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_BY_SEARCH, FETCH_POST, CREATE, UPDATE, DELETE, START_LOADING, END_LOADING, COMMENT } from '../constants/actionTypes';
 // action creators : functions that return actions
 
 //this is a action creator
@@ -68,6 +68,8 @@ export const createPost = (post, Navigate) => async (dispatch) => {
     try {
         dispatch({type: START_LOADING});
 
+        console.log(post);
+        
         const { data } = await api.createPost(post);
 
         Navigate(`/posts/${data._id}`);
@@ -108,4 +110,18 @@ export const likePost = (id) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+export const commentPost = (value, id) => async (dispatch) => {
+
+    try {
+        const { data } = await api.comment(value, id);
+
+        dispatch({type: COMMENT, payload: data});
+
+        return data.comments;
+    } catch (error) {
+
+    }
+
 }

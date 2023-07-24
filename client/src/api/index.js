@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API = axios.create( {baseURL: 'https://memories-rqws.onrender.com/'} );
+const DEVELOPMENT_URL = 'http://localhost:5001';
+const DEPLOYMENT_URL = '';
+
+const API = axios.create( {baseURL: DEVELOPMENT_URL || DEPLOYMENT_URL} );
 
 // req.headers.Authorization in every request
 API.interceptors.request.use((req) => {
@@ -24,3 +27,4 @@ export const likePost = (id) => API.patch(`/posts/${id}/likePost`)
 export const signIn = (formData) => API.post('/users/signin', formData);
 export const signUp = (formData) => API.post('/users/signup', formData);
 
+export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, { value })

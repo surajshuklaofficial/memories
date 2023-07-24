@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from 'moment';
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,17 +12,31 @@ const Post = ({ post, setCurrentId }) => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
     const navigate = useNavigate();
+    const [likes, setLikes] = useState(post?.likes);
+
+    const userId = user?.result?.sub || user?.result?._id;
+    const hasLikedPost = post.likes.find((like) => like === (userId));
 
     const backgroundStyle = {
         backgroundImage: `url(${post.selectedFile})`,
     };
 
+    const handleLike = async (e) => {
+        dispatch(likePost(post._id));
+        
+        if (hasLikedPost) {
+            setLikes(post.likes.filter((id) => id !== userId))
+        } else {
+            setLikes([ ...post.likes, userId]);
+        }
+
+    }
     const Likes = () => {
-        if (post.likes.length > 0) {
-            return post.likes.find((like) => like === (user?.result?.sub || user?.result?._id)) ? (
-                <><FontAwesomeIcon icon={SolidThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's': ''}`}</>
+        if (likes.length > 0) {
+            return hasLikedPost ? (
+                <><FontAwesomeIcon icon={SolidThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{post.likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's': ''}`}</>
             ) : (
-                <><FontAwesomeIcon icon={RegularThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes' }</>        
+                <><FontAwesomeIcon icon={RegularThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{post.likes.length} {likes.length === 1 ? 'Like' : 'Likes' }</>        
             ) 
         }
 
@@ -63,7 +77,7 @@ const Post = ({ post, setCurrentId }) => {
                 </div>
 
                 <div className="flex justify-between">
-                <button className={`flex gap-1 items-center text-${user ? ['#1f68e5'] : ['#1f68e56e']}]`} disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
+                <button className={`flex gap-1 items-center text-${user ? ['#1f68e5'] : ['#1f68e56e']}]`} disabled={!user?.result} onClick={handleLike}>
                     <Likes />
                 </button>
                 {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
