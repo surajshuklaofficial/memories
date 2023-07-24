@@ -68,6 +68,8 @@ export const createPost = (post, Navigate) => async (dispatch) => {
     try {
         dispatch({type: START_LOADING});
 
+        console.log(post);
+        
         const { data } = await api.createPost(post);
 
         Navigate(`/posts/${data._id}`);

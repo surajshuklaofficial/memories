@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API = axios.create( {baseURL: 'http://localhost:5000'} );
+const DEVELOPMENT_URL = 'http://localhost:5001';
+const DEPLOYMENT_URL = '';
+
+const API = axios.create( {baseURL: DEVELOPMENT_URL || DEPLOYMENT_URL} );
 
 // req.headers.Authorization in every request
 API.interceptors.request.use((req) => {
