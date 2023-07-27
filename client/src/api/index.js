@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const DEVELOPMENT_URL = 'http://localhost:5001';
-const DEPLOYMENT_URL = '';
+const DEPLOYMENT_URL = 'https://memories-rqws.onrender.com/';
 
-const API = axios.create( {baseURL: DEVELOPMENT_URL || DEPLOYMENT_URL} );
+const API = axios.create( {baseURL: DEPLOYMENT_URL} );
+// const API = axios.create( {baseURL: DEVELOPMENT_URL} );
 
 // req.headers.Authorization in every request
 API.interceptors.request.use((req) => {

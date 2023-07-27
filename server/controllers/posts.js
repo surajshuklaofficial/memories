@@ -5,6 +5,10 @@ export const test = (req, res) => {
     res.send('this works');
 }
 
+export const home = (req, res) => {  
+    res.send('This is a backend App of Memories Project.(My first Full Stack CRUD application made using MERN)');
+}
+
 // export const getPosts = async (req, res) => {  
 
 //     const { page } = req.query;
