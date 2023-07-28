@@ -31,15 +31,15 @@ const Navbar = () => {
 
 
   return (
-    <div className="my-8 mx-32 py-4 px-24 flex lg:flex-row gap-4 items-center justify-between border rounded-lg bg-white shadow-md flex-col">
+    <div className="mt-1 sm:mt-2 sm:mx-16 py-2 px-4 mx-2 flex lg:flex-row gap-4 items-center justify-between rounded-lg border-slate-600 bg-white border flex-col shadow-2xl">
         <a className='flex items-baseline justify-center gap-2' href='/'>    
-            <img className="text-7xl text-[#00b7ff] h-16" src={logoText} alt='memories'/>
+            <img className="text-5xl sm:text-6xl text-[#00b7ff] h-12" src={logoText} alt='memories'/>
             <img className="w-14 h-14" src={logo} alt='logo' />
         </a>
 
         {user ? (
-            <div className='flex items-center justify-between gap-16'>
-                <div className='flex items-center justify-between gap-4'>
+            <div className='flex items-center justify-between gap-8'>
+                <div className='flex items-center justify-between gap-2'>
                 {user.result.picture ? 
                 <img className='w-10 h-10 rounded-full' src={user.result.picture} alt='user-name' /> :
                 <h1 className='border rounded-full bg-black text-white w-10 h-10 flex items-center justify-center font-bold'>

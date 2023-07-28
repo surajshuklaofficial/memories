@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 
+
 body {
-    /* background-image: url("./assets/dragon-scales.png"); */
+    background-color: #f7f8fc;
+}
+
+* {
+    /* font-family: 'Noto Sans JP' !important; */
+    font-family: 'Heebo', sans-serif !important;
 }

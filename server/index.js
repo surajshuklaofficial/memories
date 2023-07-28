@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
 app.use(cors());
 
-app.use('/', home)
 app.use('/posts', postRoutes); 
 app.use('/users', userRoutes); 
+app.use('/', home);
 
 // connecting server application with database
 // const CONNECTION_URL = 'mongodb+srv://dummysingh2023april:DUMMY123@cluster0.hmdvgdd.mongodb.net/?retryWrites=true&w=majority';

@@ -39,10 +39,12 @@ const Home = () => {
     }
 
     return (
-        <div className="flex justify-between my-8 mx-32 gap-4 px-8 lg:flex-row flex-col-reverse">
-            <Posts setCurrentId={setCurrentId}/>
+        <div className="flex lg:justify-between justify-start lg:flex-row flex-col-reverse sm:mt-2 sm:mx-16 mt-1">
+            <div className="flex flex-wrap sm:mx-2 mx-auto mb-4 w-full">
+                <Posts setCurrentId={setCurrentId}/>
+            </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1 sm:gap-2 sm:w-[400px]">
                 <Search setSearch={setSearch} setTags={setTags} tags={tags} tag={tag} setTag={setTag} searchPost={searchPost} />
                 <Form currentId={currentId} setCurrentId={setCurrentId}/>
 

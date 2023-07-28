@@ -19,13 +19,13 @@ const Search = ({tags, setTags, setSearch, searchPost}) => {
   }
 
   return (
-    <div className='bg-white rounded-lg flex flex-col gap-4 px-4 py-4 mb-4 shadow-md'>
-      <div className=' flex flex-col justify-between'>
-          <input className='border w-full h-14 px-4 py-1 rounded-lg' type='search' name='search' placeholder='Search Memories' onKeyDown={handleKeyPress} onChange={(e) => setSearch(e.target.value)}/>
+    <div className='bg-white rounded-lg flex flex-col gap-1 px-4 mx-2 py-1 shadow-md border-slate-600 border'>
+      <div className=' flex flex-col justify-between w-full'>
+          <input className='border w-full h-14 rounded-lg p-2' type='search' name='search' placeholder='Search Memories' onKeyDown={handleKeyPress} onChange={(e) => setSearch(e.target.value)}/>
       </div>
       <div className='flex flex-col justify-between'>
-          <input className='border w-full h-10 px-4 py-1 rounded-lg' type='search' value={tag} name='search' placeholder='Search Tags' onKeyDown={addTag} onChange={(e) => setTag(e.target.value)}/>
-          <div className='flex flex-wrap gap-2 my-2'>
+          <input className='border w-full h-10 rounded-lg p-2' type='search' value={tag} name='search' placeholder='Search Tags' onKeyDown={addTag} onChange={(e) => setTag(e.target.value)}/>
+          <div className='flex flex-wrap gap-2 '>
             {tags.map((tag, index) => <ChipButtons key={index} tag={tag} tags={tags} setTags={setTags} setTag={setTag} searchPost={searchPost}/>)}
           </div>
       </div>

@@ -52,8 +52,8 @@ const Auth = () => {
 
     return (
 
-        <div className='flex justify-center items-center'>
-            <div className='bg-white flex flex-col items-center w-96 py-6 px-6 gap-2'>
+        <div className='flex justify-center items-center mt-4'>
+            <div className='bg-white flex flex-col items-center sm:w-96 w-[95%] py-6 px-6 gap-2 border-slate-600 border rounded-lg'>
                 <FontAwesomeIcon className='border p-3 rounded-full bg-red-600' icon={faLock} style={{color: "white"}}/>
 
                 <h3 className='font-semibold text-lg'>

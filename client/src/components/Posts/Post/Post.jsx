@@ -8,7 +8,7 @@ import { useNavigate} from 'react-router-dom';
 
 import { deletePost, likePost } from '../../../actions/posts';
 
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post, setCurrentId, setPosts }) => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
     const navigate = useNavigate();
@@ -48,12 +48,17 @@ const Post = ({ post, setCurrentId }) => {
         
     }
 
+    const handleDelete = () => {
+        dispatch(deletePost(post._id));
+        setPosts()
+    }
+
     return (
-        <div className="bg-white h-[25rem] w-80 rounded-lg break-words shadow-md" >
+        <div className="bg-white sm:w-[23%] w-full mx-2 sm:mx-0 sm:max-h-72 h-96 first-letter:rounded-lg break-words shadow-md aspect-[3/4] border">
             <div className="h-1/2 px-4 py-2 flex justify-between rounded-t-lg text-white bg-cover" style={backgroundStyle} onClick={openPost}>
                 <div className="">
-                    <h2 className="text-xl font-semibold">{post.name}</h2>
-                    <p className="text-sm">{moment(post.createdAt).fromNow()}</p>
+                    <h2 className="text-md font-semibold">{post.name}</h2>
+                    <p className="text-[0.6rem]">{moment(post.createdAt).fromNow()}</p>
                 </div>
 
                 {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
@@ -66,22 +71,22 @@ const Post = ({ post, setCurrentId }) => {
                 } */}
 
             </div>
-            <div className="flex flex-col justify-between h-1/2 mx-4 my-2 py-4">
+            <div className="flex flex-col justify-between h-1/2 py-2 px-1">
                 <div>
-                <p className="text-gray-500">{post.tags.map((tag) => `#${tag} `)}</p>
+                <p className="text-gray-500 text-xs">{post.tags.map((tag) => `#${tag} `)}</p>
 
-                <div className="flex flex-col gap-2">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
-                    <p className="text-gray-500">{post.message}</p>
+                <div className="flex flex-col gap-1">
+                    <h1 className="text-lg font-bold">{post.title}</h1>
+                    <p className="text-gray-500 h-12 overflow-y-auto text-xs">{post.message}</p>
                 </div>
                 </div>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between text-xs">
                 <button className={`flex gap-1 items-center text-${user ? ['#1f68e5'] : ['#1f68e56e']}]`} disabled={!user?.result} onClick={handleLike}>
                     <Likes />
                 </button>
                 {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
-                    <button className="flex gap-1 items-center text-red-600" onClick={() => dispatch(deletePost(post._id))}>
+                    <button className="flex gap-1 items-center text-red-600" onClick={() => dispatch(handleDelete)}>
                         <FontAwesomeIcon icon={faTrash} style={{color: "red"}} />
                         DELETE
                     </button>
