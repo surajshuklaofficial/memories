@@ -21,8 +21,6 @@ const Post = ({ post, setCurrentId, setPosts }) => {
         backgroundImage: `url(${post.selectedFile || 'https://picsum.photos/200/300'})`,
     };
 
-    console.log("hi", hasLikedPost);
-    console.log("hi2", likes)
     const handleLike = async (e) => {
         dispatch(likePost(post._id));
         
@@ -34,8 +32,6 @@ const Post = ({ post, setCurrentId, setPosts }) => {
         }
 
     }
-
-    console.log("h3", likes)
 
     const Likes = () => {
         if (likes.length > 0) {
