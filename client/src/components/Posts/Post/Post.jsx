@@ -35,7 +35,6 @@ const Post = ({ post, setCurrentId, setPosts }) => {
 
     const Likes = () => {
         if (likes.length > 0) {
-            console.log('h4',likes)
             return hasLikedPost ? (
                 <><FontAwesomeIcon icon={SolidThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's': ''}`}</>
             ) : (
