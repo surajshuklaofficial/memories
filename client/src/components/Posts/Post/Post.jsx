@@ -15,12 +15,14 @@ const Post = ({ post, setCurrentId, setPosts }) => {
     const [likes, setLikes] = useState(post?.likes);
 
     const userId = user?.result?.sub || user?.result?._id;
-    const hasLikedPost = post.likes.find((like) => like === (userId));
+    const hasLikedPost = post.likes.find((like) => like === userId);
 
     const backgroundStyle = {
-        backgroundImage: `url(${post.selectedFile})`,
+        backgroundImage: `url(${post.selectedFile || 'https://picsum.photos/200/300'})`,
     };
 
+    console.log("hi", hasLikedPost);
+    console.log("hi2", likes)
     const handleLike = async (e) => {
         dispatch(likePost(post._id));
         
@@ -28,15 +30,20 @@ const Post = ({ post, setCurrentId, setPosts }) => {
             setLikes(post.likes.filter((id) => id !== userId))
         } else {
             setLikes([ ...post.likes, userId]);
+            
         }
 
     }
+
+    console.log("h3", likes)
+
     const Likes = () => {
         if (likes.length > 0) {
+            console.log('h4',likes)
             return hasLikedPost ? (
-                <><FontAwesomeIcon icon={SolidThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{post.likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's': ''}`}</>
+                <><FontAwesomeIcon icon={SolidThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's': ''}`}</>
             ) : (
-                <><FontAwesomeIcon icon={RegularThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{post.likes.length} {likes.length === 1 ? 'Like' : 'Likes' }</>        
+                <><FontAwesomeIcon icon={RegularThumbsUp} style={{color: `${user ? '#1f68e5' : '#1f68e56e'}`}}/>&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes' }</>        
             ) 
         }
 

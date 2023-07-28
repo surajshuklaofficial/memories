@@ -44,8 +44,8 @@ const Form = ({currentId, setCurrentId}) => {
         <div>
             <form className="bg-white flex flex-col items-center justify-between p-4 mx-2 shadow-lg gap-2 rounded-md border-slate-600 border mb-1" onSubmit={handleSubmit}>
                 <h1 className="font-semibold">{ (currentId? 'Editing': 'Creating')} a Memory</h1>
-                <input className="border p-1 h-10 w-full rounded-lg px-2 py-1 shadow-lg border-stone-300" value={postData.title} placeholder="Title" onChange={(e) => setPostData({...postData, title: e.target.value})} />
-                <textarea className="border p-1 h-18 w-full rounded-lg px-2 py-1 shadow-lg border-stone-300" value={postData.message} placeholder="Message" onChange={(e) => setPostData({...postData, message: e.target.value})} />
+                <input className="border p-1 h-10 w-full rounded-lg px-2 py-1 shadow-lg border-stone-300" value={postData.title} placeholder="Title" onChange={(e) => setPostData({...postData, title: e.target.value})} required/>
+                <textarea className="border p-1 h-18 w-full rounded-lg px-2 py-1 shadow-lg border-stone-300" value={postData.message} placeholder="Message" onChange={(e) => setPostData({...postData, message: e.target.value})} required/>
                 <input className="border p-1 h-10 w-full rounded-lg px-42py-1 shadow-lg border-stone-300" value={postData.tags} placeholder="Tags" onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})} />
                 <Filebase type='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})} />
                 <button className="bg-blue-700 w-full rounded-md h-10 p-1 text-white shadow-lg" type="submit">SUBMIT</button>
