@@ -58,12 +58,12 @@ const PostDetails = () => {
                 <div className='border border-gray-300 rounded-b-md px-4 py-1 mt-2'>
                     <h1 className='font-semibold'>You might also like:</h1>
                     <hr className='border-gray-400'/>
-                        <div className='flex gap-2 justify-between m-2'>
+                        <div className='flex flex-col sm:flex-row gap-2 justify-between m-2'>
                             {recommendedPosts.map(({ title, message, name, likes, selectedFile, _id }) => (
                                 <div key={_id} className='flex flex-col gap-2 rounded-md sm:p-2 p-1 shadow-lg  border border-gray-500 sm:w-[180px]' onClick={() => openPost(_id)}>
                                     <h1 className='text-md font-semibold'>{title}</h1>
                                     <h4 className='text-xs'>Created By : <span className='text-gray-500'>{name}</span></h4>
-                                    <p className='text-gray-500 text-xs'>{message}</p>
+                                    <p className='text-gray-500 text-xs sm:h-11'>{`${message.slice(0,60)} ${message.length > 60 ? '...' : ''}`}</p>
                                     <h6 className='text-[0.6rem]'>Likes: {likes.length}</h6>
                                     <img className='sm:w-32 sm:h-16 h-32 2-60' src={selectedFile}></img>
                                 </div>
